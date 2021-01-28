@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+        crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app" class="container">
+        <!-- sezione logo -->
+        <div class="logo">
+            <img src="https://i.pinimg.com/474x/59/cd/67/59cd67b3e1d139ab65be875d2a3cdc8f.jpg" alt="logo-juve">
+        </div>
+
+
+
+        <!-- sezione input dove andare a inserire elementi -->
+        <div class="format-input">
+            <input type="text" placeholder="inserisci testo"> <button>Vai</button>
+        </div>
+
+
+        <!-- sezione inziale per elementi -->
+        <section class="center">
+            <div class="box1">
+                <ul v-if='todos.length > 0'>
+                    <li class="todo" v-for="(todo,index) in todos">
+                        {{index + 1 + ':' + todo}}
+                        <i class="fas fa-times" @click="cancellaTodo(index)"></i>
+                    </li>
+                </ul>
+                <h2 v-else>Non ci sono trofei da vincere</h2>
+            </div>
+        </section>
+        
+        <h3>Lista elementi eliminati <i class="fas fa-trash-alt"></i></h3>
+
+        <!-- sezione per cestino o storage -->
+        <section class="subcenter">
+            <div class="box2">
+                <ul>
+                    <li class="todo" v-for='(todo,index) in todosCancellati'>
+                        {{index + 1 +':' + todo}}
+                        <i class="fas fa-times" @click="ristoraTodo(index)"></i>
+                        <i class="fas fa-trash-alt"></i>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        
+
+    </div>
+    <script src="js/script.js"></script>
+</body>
+</html>
