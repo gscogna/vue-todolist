@@ -5,6 +5,7 @@
 let app = new Vue({
     el: '#app',
     data:{
+        newTodo: ' ',
         todos:[
             'Vincere il campionato',
             'Vincere la coppa italia',
@@ -14,6 +15,15 @@ let app = new Vue({
         todosCancellati:[]
     },
     methods:{
+        aggiungiTodo() {
+            if (this.newTodo.length < 4) {
+                alert('lunghezza minore di 4 caratteri ')
+            } else {
+                this.todos.push(this.newTodo);
+                this.newTodo = ' ';
+            }
+        },
+
         cancellaTodo(index){
             this.todosCancellati.push(this.todos[index]);
             this.todos.splice(index,1);
@@ -22,6 +32,14 @@ let app = new Vue({
         ristoraTodo(index){
             this.todos.push(this.todosCancellati[index]);
             this.todosCancellati.splice(index, 1);
+        },
+
+        cancellaTrash(index){
+            this.todosCancellati.splice(index, 1);
+        },
+
+        eliminaTutto(){
+            this.todosCancellati = [];
         }
     }
 });

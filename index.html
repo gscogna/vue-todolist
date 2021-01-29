@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
         integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
@@ -24,7 +24,7 @@
 
         <!-- sezione input dove andare a inserire elementi -->
         <div class="format-input">
-            <input type="text" placeholder="inserisci testo"> <button>Vai</button>
+            <input type="text" @keyup.enter="aggiungiTodo" v-model="newTodo" placeholder="inserisci testo"><button @click ='aggiungiTodo'>Inserisci</button>
         </div>
 
 
@@ -41,7 +41,7 @@
             </div>
         </section>
         
-        <h3>Lista elementi eliminati <i class="fas fa-trash-alt"></i></h3>
+        <h3>Lista elementi eliminati <i class="fas fa-trash-alt" @click='eliminaTutto'></i></h3>
 
         <!-- sezione per cestino o storage -->
         <section class="subcenter">
@@ -50,7 +50,7 @@
                     <li class="todo" v-for='(todo,index) in todosCancellati'>
                         {{index + 1 +':' + todo}}
                         <i class="fas fa-times" @click="ristoraTodo(index)"></i>
-                        <i class="fas fa-trash-alt"></i>
+                        <i class="fas fa-trash-alt" @click="cancellaTrash"></i>
                     </li>
                 </ul>
             </div>
